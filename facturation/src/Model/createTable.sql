@@ -25,6 +25,8 @@ create table HOTELs (
 	dt_trialend VARCHAR(200) NOT NULL
 	,
 	dt_end VARCHAR(200) NOT NULL
+	,
+	name_bdd VARCHAR(200) NOT NULL
 );
 
 
@@ -46,6 +48,40 @@ create table FACTUREs (
 	montant_reduction VARCHAR(200) NOT NULL
 	,
 	libelle_reduction VARCHAR(200) NOT NULL
+	,
+	facture_option 
+,
+ 	CONSTRAINT facture_option_UNIQUE UNIQUE(facture_option)
+);
+
+
+create table OPTIONs (
+	id_option INTEGER PRIMARY KEY 
+	,
+	libelle VARCHAR(200) NOT NULL
+,
+ 	CONSTRAINT libelle_UNIQUE UNIQUE(libelle)
+	,
+	tarif INTEGER NOT NULL
+,
+ 	CONSTRAINT tarif_UNIQUE UNIQUE(tarif)
+);
+
+
+create table FACTURE_OPTIONs (
+	id_facture_option INTEGER PRIMARY KEY 
+	,
+	id_facture	INTEGER
+	,
+	id_option	INTEGER NOT NULL
+	,
+	option  NOT NULL
+,
+ 	CONSTRAINT option_UNIQUE UNIQUE(option)
+	,
+	offert BOOL NOT NULL
+,
+ 	CONSTRAINT offert_UNIQUE UNIQUE(offert)
 );
 
 
