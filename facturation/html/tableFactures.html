@@ -1,0 +1,90 @@
+<table class="tableClients table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>
+				Nom
+			</th>
+			<th>
+				Janvier
+			</th>
+			<th>
+				Février
+			</th>
+			<th>
+				Mars
+			</th>
+			<th>
+				Avril
+			</th>
+			<th>
+				Mai
+			</th>
+			<th>
+				Juin
+			</th>
+			<th>
+				Juillet
+			</th>
+			<th>
+				Août
+			</th>
+			<th>
+				Septembre
+			</th>
+			<th>
+				Octobre
+			</th>
+			<th>
+				Novembre
+			</th>
+			<th>
+				Décembre
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!--{{#hotels}}-->
+			<tr>
+			<th>
+				<p data-toggle="tooltip" data-placement="bottom" title="Depuis le {{dateCreation}}">{{{nom}}}</p>
+			</th>
+				<!-- {{#mois}} -->
+				<td class="
+				<!-- {{#chambres_utilisees}} -->
+				success
+				<!-- {{/chambres_utilisees}} -->
+				<!-- {{^chambres_utilisees}} -->
+				danger
+				<!-- {{/chambres_utilisees}} -->
+				">
+					{{#montantFacture}}
+						<img alt="pdf" src="../images/logo_pdf.gif" class="infoImg pdfFact" 
+							data-toggle="tooltip" data-placement="bottom" title="Facture de {{montantFactureTotal}} €" data-url="{{urlFacture}}"/>
+						<img alt="email" src="../images/email.png" class="infoImg emailFact" 
+							data-toggle="tooltip" data-placement="bottom" title="Envoyer par emai" data-idFacture="{{idFacture}}"/>
+					{{/montantFacture}}
+					{{#idFacture}}
+						<img alt="is payee" src="../images/euro{{^isPayee}}N{{/isPayee}}P.png" class="infoImg euroLogo" 
+							data-toggle="tooltip" data-placement="bottom" data-idFacture="{{idFacture}}" title="{{#isPayee}}Non{{/isPayee}} Payée"/>
+					{{/idFacture}}
+					<img alt="à facturer" src="../images/creer.png" class="infoImg creerFact hidden" 
+						data-toggle="tooltip" data-placement="bottom" data-date="{{num}}" data-idHotel="{{idHotel}}" data-montantFact="{{montantFacture}}" data-idFacture="{{idFacture}}" title="{{^isFactureOk}}Créer facture{{/isFactureOk}}{{#isFactureOk}}Modifier facture{{/isFactureOk}}"/>
+				</td>
+				<!--{{/mois}}-->
+			</tr>
+		<!--{{/hotels}}-->
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>
+				TOTAL
+			</th>
+			<!--{{#toto}}-->
+			<th>
+				<small>{{chambres_utilisees}}/{{chambres_total}}</small><br/>
+				{{tarif}} €
+			</th>
+			<!--{{/toto}}-->
+		</tr>
+	</tfoot>
+</table>
