@@ -1,0 +1,49 @@
+<div id="creationFacture">
+	<h4>Du <span id="deb_facture">{{dateDeb}}</span></h4>
+	<table id="creaResa" class="fullSize">
+	<tr>
+		<td>Nombre de mois :</td>
+		<td><input type="text" name="nbMois" id="nbMois" value="3"/>€</td>
+	</tr>
+	<tr>
+		<td>Numéro de facture :</td>
+		<td><input type="text" name="numero" id="numeroFacture" value="{{numeroFact}}"/></td>
+	</tr>
+	<tr>
+		<td>Montant :</td>
+		<td><input type="text" name="montant" id="montantFacture" value="{{montantFact}}"/>€</td>
+	</tr>
+	<tr>
+		<td>Libelle reduc :</td>
+		<td><input type="text" name="libelle" id="libelleReduc" value="{{libelReduc}}"/></td>
+	</tr>
+	<tr>
+		<td>Montant reduc :</td>
+		<td><input type="text" name="montantReduc" id="montantReduc" value="{{montantReduc}}"/>€</td>
+	</tr>
+	</table>
+</div>
+
+<div id="divOptions">
+<h2>Options</h2>
+{{#options}}
+	<label style="width: 40%">
+		{{#selected}}<input name="options[]" value="{{id}}" type="checkbox" checked="checked"/>{{/selected}}
+		{{^selected}}<input name="options[]" value="{{id}}" type="checkbox"/>{{/selected}}
+		  {{{libelle}}} ({{tarif}} €)
+	</label>
+	<label>
+		{{#offert}}<input name="offert[]" value="{{id}}" type="checkbox" checked="checked"/>{{/offert}}
+		{{^offert}}<input name="offert[]" value="{{id}}" type="checkbox"/>{{/offert}}
+			Offert
+	</label><br/>
+{{/options}}
+</div>
+
+<br/><br/>
+<button id="validFact" class="">Valider</button>
+
+
+
+
+
