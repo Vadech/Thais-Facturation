@@ -6,7 +6,19 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $idFacture = isset($_GET["idFacture"]) ? $_GET["idFacture"] : -1;
 if($idFacture == "")
-	$idFacture = -1;
+{
+	$hotel = new Hotel($_GET["idHotel"]);
+	$lastFact = $hotel->getLastFacture();
+	if($lastFact != null && $lastFact->getId() != -1)
+	{
+		$idFacture = $lastFact->getId();
+	}
+	else
+	{
+		$idFacture = -1;
+	}	
+	
+}
 
 $allOptions = Option::getAllOptions();
 $options = array();

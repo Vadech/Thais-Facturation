@@ -57,13 +57,11 @@
 				danger
 				<!-- {{/chambres_utilisees}} -->
 				">
-					{{#montantFacture}}
+					{{#idFacture}}
 						<img alt="pdf" src="../images/logo_pdf.gif" class="infoImg pdfFact" 
 							data-toggle="tooltip" data-placement="bottom" title="Facture de {{montantFactureTotal}} €" data-url="{{urlFacture}}"/>
 						<img alt="email" src="../images/email.png" class="infoImg emailFact" 
 							data-toggle="tooltip" data-placement="bottom" title="Envoyer par emai" data-idFacture="{{idFacture}}"/>
-					{{/montantFacture}}
-					{{#idFacture}}
 						<img alt="is payee" src="../images/euro{{^isPayee}}N{{/isPayee}}P.png" class="infoImg euroLogo" 
 							data-toggle="tooltip" data-placement="bottom" data-idFacture="{{idFacture}}" title="{{#isPayee}}Non{{/isPayee}} Payée"/>
 					{{/idFacture}}

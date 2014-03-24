@@ -757,10 +757,24 @@ class Facture  extends Entity{
 			$pdf->SetFont('Arial','',10);
 			foreach($lignes as $texte)
 			{
-				$pdf->MultiCell(0,5,utf8_decode($texte),0,1,'J');
+				$texte = utf8_decode($texte);
+				$texte = str_replace("euros", $euro, $texte);
+				$pdf->MultiCell(0,5, $texte,0,1,'J');
 			}
 			$pdf->Ln(7) ;
 		}
+		
+		//footer mention legales
+		$mentionLegale1 = utf8_decode("Thaïs-Soft - 245 Sous le Mont Noir - 39150 Lac des Rouges Truites - http://thais-soft.com - contact@thais-soft.com");
+		$mentionLegale2 = "S.A.R.L. au capital de 5000 ".$euro." - SIRET 494 261 035 00013 RCS Lons-le-Saunier - TVA FR86494261035 - APE 721Z";
+		
+		//Positionnement 1,5 cm du bas
+		$pdf->SetY(-37);
+		//Police Arial italique 8
+		$pdf->SetFont('Arial','I',8);
+		$pdf->Cell(0,7, $mentionLegale1 ,0,0,'C');
+		$pdf->Ln(5) ;
+		$pdf->Cell(0,7, $mentionLegale2 ,0,0,'C');
 		
 		$pdf->Output($local_path);
 
