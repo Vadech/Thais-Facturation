@@ -148,6 +148,7 @@ function updateFactOption() {
 		url : '../php/getOptions.php',
 		data: { 
 		  	idFacture : clickedIdFacture,
+		  	idHotel: clickedIdHotel
 		},
 		success : function(data) {
 			var res = Mustache.render($("#divOptions").html(), data);

@@ -54,6 +54,12 @@ foreach ($tabHotels as $hotel)
 			$dataHotels[$i]['mois'][$mois-1]['montantFactureTotal'] = $total;
 			$dataHotels[$i]['mois'][$mois-1]['urlFacture'] = $facture->getUrl_PDF();
 		}
+		else
+		{
+			$lastFact = $hotel->getLastFacture();
+			if($lastFact != null)
+				$dataHotels[$i]['mois'][$mois-1]['montantFacture'] = $lastFact->getMontant_facture();
+		}
 		$facture = $hotel->getFactureFor($annee."-".$mois."-01");
 		if($facture != null && $facture->getId() != -1)
 		{

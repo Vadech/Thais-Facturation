@@ -709,6 +709,10 @@ class Hotel  extends Entity{
 			return null;
 		}
 		$id = $row['lastId'];
+		if($id == "" || $id == null)
+		{
+			return null;
+		}
 		$facture = new Facture($id);
 		return $facture;
 		// End of user code
