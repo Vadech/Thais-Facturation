@@ -82,11 +82,20 @@ foreach ($tabHotels as $hotel)
 	{
 		$toto[$m]['chambres_total'] += $dataHotels[$i]['mois'][$m]['chambres_total'];
 		$toto[$m]['chambres_utilisees'] += $dataHotels[$i]['mois'][$m]['chambres_utilisees'];
-		$toto[$m]['tarif'] += $dataHotels[$i]['mois'][$m]['montantFacture'];
+		if(isset($dataHotels[$i]['mois'][$m]['montantFactureTotal']))
+		{
+			$toto[$m]['total'] += $dataHotels[$i]['mois'][$m]['montantFactureTotal'];
+		}
 	}
 	$i++;
 }
 
-echo json_encode(array("hotels" => $dataHotels, "toto" => $toto));
+$totalTotal = 0;
+foreach ($toto as $m => $v)
+{
+	$totalTotal += $v['total'];
+}
+
+echo json_encode(array("hotels" => $dataHotels, "toto" => $toto, "totalTotal" => $totalTotal));
 
 ?>

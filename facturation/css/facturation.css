@@ -80,3 +80,8 @@ table.tableClients td {
 #external {
 	overflow: hidden;
 }
+
+.factCell {
+	position:relative;
+	display: table-cell;
+}
