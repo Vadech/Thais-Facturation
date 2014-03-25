@@ -6,8 +6,9 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $idFacture = $_GET['idFacture'];
 $facture = new Facture($idFacture);
+$hotel = new Hotel($facture->getIdHotel());
 
-$email = "aurel.vionnet@gmail.com";
+$email = $hotel->getEmail_hotel();
 $file_name = $facture->getUrl_PDF();
 $subject = "Thaïs-Soft: Facturation";
 $message = "Vous trouverez ci-joint votre facture du ".FraDate($facture->getDate_deb_facture())." au ".FraDate($facture->getDate_fin_facture());
@@ -24,7 +25,7 @@ $headers .= "MIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=\"$bou
 
 $body = "--". $boundary ."\nContent-Type: text/plain; charset=ISO-8859-1\r\n\n".$message . $attached;
 
+@mail("aurel.vionnet@gmail.com",$subject,$body,$headers);
 @mail($email,$subject,$body,$headers);
-	
 
 ?>
