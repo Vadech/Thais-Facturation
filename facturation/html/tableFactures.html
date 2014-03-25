@@ -49,7 +49,7 @@
 				<p data-toggle="tooltip" data-placement="bottom" title="Depuis le {{dateCreation}}">{{{nom}}}</p>
 			</th>
 				<!-- {{#mois}} -->
-				<td class="
+				<td class="factCell 
 				<!-- {{#chambres_utilisees}} -->
 				success
 				<!-- {{/chambres_utilisees}} -->
@@ -58,12 +58,14 @@
 				<!-- {{/chambres_utilisees}} -->
 				">
 					{{#idFacture}}
+						{{#montantFactureTotal}}
 						<img alt="pdf" src="../images/logo_pdf.gif" class="infoImg pdfFact" 
 							data-toggle="tooltip" data-placement="bottom" title="Facture de {{montantFactureTotal}} €" data-url="{{urlFacture}}"/>
 						<img alt="email" src="../images/email.png" class="infoImg emailFact" 
-							data-toggle="tooltip" data-placement="bottom" title="Envoyer par emai" data-idFacture="{{idFacture}}"/>
+							data-toggle="tooltip" data-placement="bottom" title="Envoyer par email" data-idFacture="{{idFacture}}"/>
+						{{/montantFactureTotal}}
 						<img alt="is payee" src="../images/euro{{^isPayee}}N{{/isPayee}}P.png" class="infoImg euroLogo" 
-							data-toggle="tooltip" data-placement="bottom" data-idFacture="{{idFacture}}" title="{{#isPayee}}Non{{/isPayee}} Payée"/>
+							data-toggle="tooltip" data-placement="bottom" data-idFacture="{{idFacture}}" title="{{^isPayee}}Non{{/isPayee}} Payée"/>
 					{{/idFacture}}
 					<img alt="à facturer" src="../images/creer.png" class="infoImg creerFact hidden" 
 						data-toggle="tooltip" data-placement="bottom" data-date="{{num}}" data-idHotel="{{idHotel}}" data-montantFact="{{montantFacture}}" data-idFacture="{{idFacture}}" title="{{^isFactureOk}}Créer facture{{/isFactureOk}}{{#isFactureOk}}Modifier facture{{/isFactureOk}}"/>
@@ -80,9 +82,11 @@
 			<!--{{#toto}}-->
 			<th>
 				<small>{{chambres_utilisees}}/{{chambres_total}}</small><br/>
-				{{tarif}} €
+				{{total}} €
 			</th>
 			<!--{{/toto}}-->
 		</tr>
 	</tfoot>
 </table>
+
+<h4>Total total: {{totalTotal}} €</h4>
