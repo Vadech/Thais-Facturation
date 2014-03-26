@@ -57,6 +57,7 @@
 				danger
 				<!-- {{/chambres_utilisees}} -->
 				">
+				<div class="factCell">
 					{{#idFacture}}
 							{{#montantFactureTotal}}
 							<img alt="pdf" src="../images/logo_pdf.gif" class="infoImg pdfFact" 
@@ -69,6 +70,7 @@
 					{{/idFacture}}
 					<img alt="à facturer" src="../images/creer.png" class="infoImg creerFact hidden" 
 						data-toggle="tooltip" data-placement="bottom" data-date="{{num}}" data-idHotel="{{idHotel}}" data-montantFact="{{montantFacture}}" data-idFacture="{{idFacture}}" title="{{^isFactureOk}}Créer facture{{/isFactureOk}}{{#isFactureOk}}Modifier facture{{/isFactureOk}}"/>
+				</div>		
 				</td>
 				<!--{{/mois}}-->
 			</tr>

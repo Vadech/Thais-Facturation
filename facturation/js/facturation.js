@@ -76,7 +76,7 @@ function updateAll() {
 					}
 				});
 				
-				$(".creerFact.hidden").parent().hover(
+				$(".factCell").hover(
 					function() {
 						$( this ).children(".creerFact").removeClass( "hidden" );
 					}, function() {
