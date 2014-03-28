@@ -589,7 +589,7 @@ class Coworker  extends Entity{
 		$tab = array() ;
 		while($res->fetchInto($row, DB_FETCHMODE_ASSOC))
 		{
-			$tab[] = new Coworker($row['id_coworker']) ;
+            $tab[] = new Coworker($row['id_coworker']) ;
 		}
 
 		return $tab ;

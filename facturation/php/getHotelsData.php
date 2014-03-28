@@ -18,15 +18,13 @@ $i = 0;
 foreach ($tabHotels as $hotel)
 {
 
-	$tabRC = $hotel->getChambresReservationsPeriode($date_debut,$date_fin);
-
-	if(count($tabRC) == 0 || fraDate($hotel->getDt_install()) == "00/00/0000" || $hotel->getDt_end() < date("Y-m-d"))
+	if(fraDate($hotel->getDt_install()) == "00/00/0000" || $hotel->getDt_end() < date("Y-m-d"))
 	{
 		continue;
 	}
 
 	$dataHotels[$i]["idHotel"] = $hotel->getId();
-	$dataHotels[$i]["nom"] = $hotel->getNom_hotel();
+	$dataHotels[$i]["nom"] = $hotel->getNom_coworker();
 	$dataHotels[$i]["dateCreation"] = fraDate($hotel->getDt_install());
 
 	foreach($tabRC as $value)
@@ -72,16 +70,10 @@ foreach ($tabHotels as $hotel)
 		$facture = $facture = $hotel->getFactureFor($annee."-".$mois."-01");
 		if($facture != null && $facture->getId() != -1)
 			$dataHotels[$i]['mois'][$mois-1]['isFactureOk'] = true;
-		
-		$dataHotels[$i]['mois'][$mois-1]['chambres_total']++;
-		if($value['nb_reservations'] > 0)
-			$dataHotels[$i]['mois'][$mois-1]['chambres_utilisees']++;
 	}
 
 	for ($m=0;$m<12;$m++)
 	{
-		$toto[$m]['chambres_total'] += $dataHotels[$i]['mois'][$m]['chambres_total'];
-		$toto[$m]['chambres_utilisees'] += $dataHotels[$i]['mois'][$m]['chambres_utilisees'];
 		if(isset($dataHotels[$i]['mois'][$m]['montantFactureTotal']))
 		{
 			$toto[$m]['total'] += $dataHotels[$i]['mois'][$m]['montantFactureTotal'];
