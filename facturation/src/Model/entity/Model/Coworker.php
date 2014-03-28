@@ -44,7 +44,7 @@ class Coworker  extends Entity{
 		$connection->open();
 		$objquery = new DB_QueryTool($connection->getDb()) ;
 
-		$sql = 'SELECT * FROM thaisodt.coworkers WHERE id_coworker = '.$id ;
+		$sql = 'SELECT * FROM coworkers WHERE id_coworker = '.$id ;
 		if(!$res = $objquery->execute($sql, 'query'))
 		{
 			echo mysql_error();
@@ -576,7 +576,7 @@ class Coworker  extends Entity{
 		$connection->open();
 		$objquery = new DB_QueryTool($connection->getDb()) ;
 
-		$sql = 'SELECT id_coworker FROM thaisodt.coworkers' ;
+		$sql = 'SELECT id_coworker FROM coworkers' ;
 		$sql.= ' WHERE dt_install<=NOW()' ;
 		$sql.= ' ORDER BY id_coworker ;' ;
 		$res = $objquery->execute($sql, 'query');
