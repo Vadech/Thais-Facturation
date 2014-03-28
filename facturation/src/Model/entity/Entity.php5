@@ -12,16 +12,6 @@
 require_once(dirname(__FILE__)."/IEntity.php5");
 
 /**
- * PEAR log.
- */
-require_once("Log.php");
-	
-/**
- * PEAR DB
- */
-require_once("DB.php");
-
-/**
  * root class, manages ID ,debug and define string serialization signature
  * @package entity
  * @version $Id$
