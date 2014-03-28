@@ -12,7 +12,7 @@ else
 $date_debut = $annee.'-01-01';
 $date_fin = $annee.'-12-31';
 
-$tabHotels = Hotel::getHotelsAFacturer();
+$tabHotels = Coworker::getCoworkersAFacturer();
 $dataHotels = array();
 $i = 0;
 foreach ($tabHotels as $hotel)
