@@ -14,11 +14,11 @@
 	 * PEAR log.
 	 */
 	require_once("Log.php");
-	
+
 	/**
 	 * PEAR DB
 	 */
-	require_once("DB.php");
+    require_once("DB.php");
 	
   	/**
   	 * other imports
@@ -33,7 +33,7 @@
 	/**
 	 * include files for business class and controlers
 	 */ 
-	require_once(dirname(__FILE__) . "/../entity/Model/Hotel.php5");
+	require_once(dirname(__FILE__) . "/../entity/Model/Coworker.php");
 	/**
 	 * include files for business class and controlers
 	 */ 
