@@ -7,7 +7,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $idFacture = isset($_GET["idFacture"]) ? $_GET["idFacture"] : -1;
 if($idFacture == "")
 {
-	$hotel = new Hotel($_GET["idHotel"]);
+	$hotel = new Coworker($_GET["idHotel"]);
 	$lastFact = $hotel->getLastFacture();
 	if($lastFact != null && $lastFact->getId() != -1)
 	{

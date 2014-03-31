@@ -31,7 +31,7 @@ if($moisApres > 12)
 $dateDeb = date('Y-m-d', mktime(0,0,0, $mois, 1, $annee));
 $dateFin = date('Y-m-d', mktime(0,0,0, $moisApres, 1, $anneeApres));
 
-$hotel = new Hotel($idHotel);
+$hotel = new Coworker($idHotel);
 $facture = $hotel->getFactureFor($dateDeb);
 $newFact = false;
 if($facture == null)

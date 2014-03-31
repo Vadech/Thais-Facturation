@@ -25,7 +25,7 @@ require_once(dirname(__FILE__).'/../Entity.php5');
  */
 class Facture  extends Entity{
 
-	public $id_hotel;
+	public $id_coworker;
 	public $numero_facture;
 	public $date_deb_facture;
 	public $date_fin_facture;
@@ -273,7 +273,7 @@ class Facture  extends Entity{
 	 * @return
 	 */
 	public function getIdHotel($lazyloading = true) {
-		return $this->id_hotel;
+		return $this->id_coworker;
 	}
 	
 	
@@ -284,7 +284,7 @@ class Facture  extends Entity{
 	 * @param int
 	 */
 	public function setIdHotel($id) {
-		$this->id_hotel = $id;
+		$this->id_coworker = $id;
 	}
 	
 	/**
@@ -554,14 +554,14 @@ class Facture  extends Entity{
 		require_once('../biblio/fpdf153/fpdf.php');
 		
 		// Initialisation des variables
-		$objHotel = new Hotel($this->getIdHotel()) ;
+		$objHotel = new Coworker($this->getIdHotel()) ;
 		setlocale(LC_TIME, 'fr_FR') ;
 		$alinea = '';
 		$euro = ' '.chr(128);
-		$hotelNomGood = removeAccent(strtolower(str_replace(" ", "_", $objHotel->getNom_hotel())));
+		$hotelNomGood = removeAccent(strtolower(str_replace(" ", "_", $objHotel->getNom_coworker())));
 		$nom = '/pdf/facture_'.$hotelNomGood.'_'.$this->numero_facture.'.pdf';
 		$this->setUrl_PDF("..".$nom);
-		$local_path = $_SERVER['DOCUMENT_ROOT'].'/facturation'.$nom ;
+		$local_path = $_SERVER['DOCUMENT_ROOT'].'/'.$nom ;
 		
 		// Suppression de la facture si elle existe
 		if(file_exists($local_path))
@@ -571,7 +571,7 @@ class Facture  extends Entity{
 		if($objHotel == null or $objHotel->getId() == -1)
 		{
 			// pb avec l'hotel
-			echo 'Hotel correspondant non trouvé : id='.$this->getId_hotel() ;
+			echo 'Hotel correspondant non trouvé : id='.$this->getId_coworker() ;
 			return 1 ;
 		}
 		
@@ -593,15 +593,15 @@ class Facture  extends Entity{
 		// Nom hôtel
 		$pdf->Cell(105,7,utf8_decode('Thaïs-Soft'),0,0,'L');
 		// Nom client
-		$pdf->Cell(0,7,utf8_decode(html_entity_decode($objHotel->getNom_hotel(), ENT_NOQUOTES, "utf-8")),0,1,'L');
+		$pdf->Cell(0,7,utf8_decode(html_entity_decode($objHotel->getNom_coworker(), ENT_NOQUOTES, "utf-8")),0,1,'L');
 		
 		// coordonnées
 		$pdf->SetFont('Arial','',14);
 		$pdf->Cell(105,7,utf8_decode('245 Sous le Mont Noir'),0,0,'L');
-		$pdf->Cell(0,7,utf8_decode(html_entity_decode($objHotel->getAdresse_hotel(), ENT_NOQUOTES, "utf-8")),0,1,'L');
+		$pdf->Cell(0,7,utf8_decode(html_entity_decode($objHotel->getAdresse_coworker(), ENT_NOQUOTES, "utf-8")),0,1,'L');
 		
 		$pdf->Cell(105,7,'39150'.'  '.utf8_decode('Lac des Rouges Truites'),0,0,'L');
-		$pdf->Cell(0,7,$objHotel->getCode_postal_hotel().'  '.utf8_decode(html_entity_decode($objHotel->getVille_hotel(), ENT_NOQUOTES, "utf-8")),0,1,'L');
+		$pdf->Cell(0,7,$objHotel->getCode_postal_coworker().'  '.utf8_decode(html_entity_decode($objHotel->getVille_coworker(), ENT_NOQUOTES, "utf-8")),0,1,'L');
 		$pdf->Ln(5) ;
 		
 		$pdf->SetFont('Arial','',12);

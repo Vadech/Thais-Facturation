@@ -115,8 +115,8 @@ class FactureOption  extends Entity{
 			$this->setId(mysql_insert_id()) ;
 		else
 		{
-			$this->setId(-1) ;
-			Erreur::add(__CLASS__,__METHOD__,1,$sql,mysql_error()) ;
+            $this->setId(-1) ;
+            var_dump($sql);
 			return false ;
 		}
 		return true ;

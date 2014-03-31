@@ -27,9 +27,9 @@ foreach ($tabHotels as $hotel)
 	$dataHotels[$i]["nom"] = $hotel->getNom_coworker();
 	$dataHotels[$i]["dateCreation"] = fraDate($hotel->getDt_install());
 
-	foreach($tabRC as $value)
+	for($mois = 1;$mois < 13; $mois++)
 	{
-		$mois = $value['mois'] ;
+		//$mois = $value['mois'] ;
 		$dataHotels[$i]['mois'][$mois-1]['num'] = $mois;
 		$facture = $hotel->getFacture($annee."-".$mois."-01");
 		if($facture != null && $facture->getId() != -1)
